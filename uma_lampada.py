@@ -5,7 +5,6 @@
 
 from tkinter import *
 import serial
-import threading
 
 # Classe para comunicação com o Arduino
 class Arduino:
@@ -53,14 +52,20 @@ class MainWindow(Func):
 
     def frame(self):
         self.root.title("Liga/Desliga LED")
-        self.root.geometry("400x300")
+        self.root.geometry("300x300")
         self.root.resizable(True, False)
 
-        self.btnligar = Button(self.root, text='Ligar', font=('Verdana', 10, 'bold'), command=self.ligar)
-        self.btnligar.place(relx=.45, rely=.2)
+        self.btnligar = Button(self.root, text='Ligar', font=('Verdana', 10, 'bold'), 
+                               command=self.ligar, 
+                               borderwidth=3,
+                               bg='lightgreen')
+        self.btnligar.place(relx=.25, rely=.2, relwidth=.4, relheight=.3)
 
-        self.btndesligar = Button(self.root, text='Desligar', font=('Verdana', 10, 'bold'), command=self.desligar)
-        self.btndesligar.place(relx=.45, rely=.4)
+        self.btndesligar = Button(self.root, text='Desligar', font=('Verdana', 10, 'bold'), 
+                                  command=self.desligar, 
+                                  borderwidth=3,
+                                  bg='coral')
+        self.btndesligar.place(relx=.25, rely=.6, relwidth=.4, relheight=.3)
 
 # Cria o objeto Arduino
 arduino = Arduino()
