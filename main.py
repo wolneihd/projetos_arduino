@@ -62,21 +62,8 @@ class MainWindow(Func):
         self.btndesligar = Button(self.root, text='Desligar', font=('Verdana', 10, 'bold'), command=self.desligar)
         self.btndesligar.place(relx=.45, rely=.4)
 
-# Função para iniciar a comunicação com o Arduino em uma thread
-def arduino_loop():
-    while True:
-        cmd = input('Digite "l" para ligar e "d" para desligar: ')
-        if cmd in ['l', 'd']:
-            arduino.send_command(cmd)
-        else:
-            print('Comando inválido!')
-
 # Cria o objeto Arduino
 arduino = Arduino()
-
-# Inicia o loop da comunicação com o Arduino em uma thread separada
-thread = threading.Thread(target=arduino_loop, daemon=True)
-thread.start()
 
 # Inicia a interface gráfica
 MainWindow(arduino)
