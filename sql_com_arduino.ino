@@ -3,17 +3,22 @@
  */
 
 int porta = 3;
+int sinal = 13; // sinal luminoso junto com o clique/salvamento no BD.
 
 void setup() {
-  Serial.begin(9600);                       //Inicia o Monitor Serial
-  pinMode(porta, INPUT_PULLUP);                 //Define o pino como entrada
+  Serial.begin(9600);
+  pinMode(porta, INPUT_PULLUP);      
+  pinMode(sinal, OUTPUT);
+  digitalWrite(sinal, LOW);           
 }
 
 void loop() {
-  int estado = digitalRead(porta);              //Defina uma variável que realizará a leitura do botão
+  int estado = digitalRead(porta);       
 
-  if (estado == LOW) {                      //Verifica se o botão for pressionado
-    Serial.println("clicado");             //Imprime a mensagem no monitor serial
-    delay(500);                            //Delay de 1 segundo
+  if (estado == LOW) {                    
+    Serial.println("clicado");  
+    digitalWrite(sinal, HIGH);            
+    delay(500);                            
+    digitalWrite(sinal, LOW); 
   }
 }

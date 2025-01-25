@@ -27,7 +27,9 @@ class Arduino:
         if self.connected:
             msg = self.arduino.readline()
             self.arduino.flush() 
-            print('Mensagem serial recebica: ', msg)
+            RED = '\033[31m'
+            RESET = '\033[0m'
+            print(RED + 'Mensagem serial recebida: ' + RESET, msg)
 
 # Classe para comunicação com o Banco de Dados
 class Repositorio:
@@ -64,10 +66,9 @@ class Repositorio:
         try:
             conexao = self.conectar()
             cursor = conexao.cursor()
-            cursor.execute("SELECT * FROM tempos;")
-            registros = cursor.fetchall()
-            for registro in registros:
-                print(registro[0], registro[1])
+            cursor.execute("SELECT count(*) FROM tempos;")
+            registro = cursor.fetchone()
+            print(f'Total de registros no BD: {registro[0]}')
         except Exception as error:
             print('Erro ao fazer "select" no Banco de Dados: ', error)
         finally:
