@@ -1,23 +1,26 @@
-# define let_1 1
-# define let_2 2
+# define led_1 2
+# define led_2 3
 # define tempo 1000
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(let_1, OUTPUT);
-  pinMode(let_2, OUTPUT);
-  digitalWrite(let_1, LOW);
-  digitalWrite(let_2, LOW);
+  pinMode(led_1, OUTPUT);
+  pinMode(led_2, OUTPUT);
+  digitalWrite(led_1, LOW);
+  digitalWrite(led_2, LOW);
 }
 
 void alterar(bool b1, bool b2, int tmp) {
-  digitalWrite(let_1, b1);
-  digitalWrite(let_2, b2);
+  digitalWrite(led_1, b1);
+  digitalWrite(led_2, b2);
+  delay(tempo);
 }
 
 void loop() {
-  alterar(false, false, tempo); // 0 - 0
-  alterar(false, true, tempo); // 0 - 1
-  alterar(true, false, tempo); // 1 - 0
-  alterar(true, true, tempo); // 1 - 1
+  alterar(false, false, tempo); // 1 --> 0 - 0
+  alterar(false, true, tempo); //  2 --> 0 - 1
+  alterar(true, false, tempo); //  3 --> 1 - 0
+  alterar(true, true, tempo); //   4 --> 1 - 1
+  alterar(true, false, tempo); //  3 --> 1 - 0
+  alterar(false, true, tempo); //  2 --> 0 - 1
 }
