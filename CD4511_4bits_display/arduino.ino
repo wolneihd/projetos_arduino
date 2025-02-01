@@ -20,8 +20,8 @@ void setup() {
 void alterar(bool b1, bool b2, bool b3, bool b4, int tmp) {
   digitalWrite(led_1, b1);
   digitalWrite(led_2, b2);
-  digitalWrite(led_3, b2);
-  digitalWrite(led_4, b2);
+  digitalWrite(led_3, b3);
+  digitalWrite(led_4, b4);
   delay(tempo);
 }
 
