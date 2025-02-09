@@ -2,6 +2,7 @@
  * Método POST no ESP-32 rodando com API Flask (Python).
  * 03 botões na protoboard para receber os inputs. 
  * LCD para mostrar mensagem amigável ao usuário.
+ * Necessário importar o config.h com os dados da rede.
  */
 
 // INCLUSÃO DE BIBLIOTECAS
@@ -9,6 +10,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include "config.h"
 
 // DISPLAY LCD
 #define endereco  0x27 // Endereços comuns: 0x27, 0x3F
@@ -20,8 +22,8 @@
 #define btn_02 2
 #define btn_03 4
 
-const char* ssid = "nome_rede";
-const char* pass = "senha";
+const char* ssid = WIFI_SSID;
+const char* pass = WIFI_PASSWORD;
 
 // INSTANCIANDO OBJETOS
 LiquidCrystal_I2C lcd(endereco, colunas, linhas);
